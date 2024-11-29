@@ -14,7 +14,7 @@ app.listen(8080,()=>{
 
 import { MongoClient, ObjectId } from "mongodb";
 //const uri = "mongodb://127.0.0.1:27017"
-const uri = "mongodb+srv://sparestorage36:IndMjBkzX0Y7PsAJ@cluster0.on6eg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const uri = "mongodb+srv://${usr}:${pwd}@cluster0.on6eg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 //sparestorage36:IndMjBkzX0Y7PsAJ
 //${usr}:${pwd}
 const client = new MongoClient(uri)

@@ -18,8 +18,25 @@ const uri = "mongodb+srv://${usr}:${pwd}@cluster0.on6eg.mongodb.net/?retryWrites
 //sparestorage36:IndMjBkzX0Y7PsAJ
 //${usr}:${pwd}
 const client = new MongoClient(uri)
-const db = client.db("ecomm1")
-
+//const db = client.db("ecomm1")
+async function run() {
+    try {
+      await client.connect();
+      const db = client.db("ecomm1");
+      const collection = db.collection("products");
+      
+      const result = await collection.find({}).toArray();
+      console.log(result);
+    } catch (err) {
+      console.error("Error:", err);
+    } finally {
+      // Close the client only after operations are complete
+      await client.close();
+    }
+  }
+  
+run();
+  
 app.get("/", async (req,res)=>{
     //res.send("Hello World")
     const items =  await db.collection("products").find().toArray()
